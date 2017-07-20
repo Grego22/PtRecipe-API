@@ -9,22 +9,22 @@ button.addEventListener('click', () => {
 	fun = search.value
 
 	fetch(url + fun).then(response => response.json()).then(grego => {
-		console.log(grego)
 		for (var i = 0; i < grego.results.length; i++) {
-			let char = document.createElement('li')
-			char.textContent += grego.results[i].title
-			char.appendChild(pupp)
+			let newLi = document.createElement('li')
+
+			let title = document.createElement('h3')
+			title.textContent += grego.results[i].title
+			newLi.appendChild(title)
 
 			let img = document.createElement('img')
 			img.src = grego.results[i].thumbnail
-			char.appendChild(img)
+			newLi.appendChild(img)
 
 			let linkage = document.createElement('a')
 			linkage.href = grego.results[i].href
-			char.appendChild(linkage)
-			console.log(grego)
+			newLi.appendChild(linkage)
 
-			pupp.appendChild(char)
+			pupp.appendChild(newLi)
 		}
 	})
 })
